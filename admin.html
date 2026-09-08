@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Admin Dashboard — CampusFix</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+  <!-- Site Navigation -->
+  <header class="site-header">
+    <div class="container nav-container">
+      <a href="index.html" class="brand-logo">
+        <span class="brand-icon">⚡</span>
+        <span>CampusFix <span style="font-size: 0.75rem; font-weight: 500; color: var(--accent); background: var(--accent-soft); padding: 0.15rem 0.5rem; border-radius: 4px; margin-left: 0.3rem;">ADMIN</span></span>
+      </a>
+
+      <button class="mobile-toggle" id="mobileNavBtn" aria-label="Toggle navigation">☰</button>
+
+      <ul class="nav-menu" id="navMenu">
+        <li><a href="index.html" class="nav-link">Home</a></li>
+        <li><a href="report.html" class="nav-link">Report Issue</a></li>
+        <li><a href="track.html" class="nav-link">Track Issue</a></li>
+        <li><a href="admin.html" class="nav-link active">Admin Portal</a></li>
+      </ul>
+
+      <div class="nav-cta-wrap">
+        <a href="report.html" class="btn btn-primary btn-sm">+ New Issue</a>
+      </div>
+    </div>
+  </header>
+
+  <main class="page-container">
+    <div class="container">
+      <div style="display: flex; justify-content: space-between; align-items: flex-end; margin-bottom: 2rem; flex-wrap: wrap; gap: 1rem;">
+        <div>
+          <span class="section-tag">Campus Administration</span>
+          <h1 style="font-size: 1.85rem; font-weight: 800; color: var(--primary);">Issue Management Console</h1>
+        </div>
+      </div>
+
+      <!-- Quick KPI Stats Cards -->
+      <div class="stats-grid" style="margin-bottom: 2rem;">
+        <div class="stat-card">
+          <div id="statTotal" class="stat-value">0</div>
+          <div class="stat-label">Total Issues</div>
+        </div>
+        <div class="stat-card">
+          <div id="statPending" class="stat-value" style="color: var(--status-review);">0</div>
+          <div class="stat-label">Pending Triage</div>
+        </div>
+        <div class="stat-card">
+          <div id="statProgress" class="stat-value" style="color: var(--status-progress);">0</div>
+          <div class="stat-label">In Progress</div>
+        </div>
+        <div class="stat-card">
+          <div id="statResolved" class="stat-value" style="color: var(--status-resolved);">0</div>
+          <div class="stat-label">Resolved</div>
+        </div>
+      </div>
+
+      <!-- Analytics Breakdown Overview -->
+      <div class="chart-grid">
+        <!-- Status Breakdown Bars -->
+        <div class="chart-card">
+          <div class="chart-card-title">Issues by Status</div>
+
+          <div class="bar-row">
+            <div class="bar-label-group">
+              <span>Reported</span>
+              <span id="count-st-Reported">0</span>
+            </div>
+            <div class="bar-track"><div id="bar-st-Reported" class="bar-fill" style="width: 0%; background: #64748b;"></div></div>
+          </div>
+
+          <div class="bar-row">
+            <div class="bar-label-group">
+              <span>Under Review</span>
+              <span id="count-st-UnderReview">0</span>
+            </div>
+            <div class="bar-track"><div id="bar-st-UnderReview" class="bar-fill" style="width: 0%; background: var(--status-review);"></div></div>
+          </div>
+
+          <div class="bar-row">
+            <div class="bar-label-group">
+              <span>Assigned</span>
+              <span id="count-st-Assigned">0</span>
+            </div>
+            <div class="bar-track"><div id="bar-st-Assigned" class="bar-fill" style="width: 0%; background: var(--status-assigned);"></div></div>
+          </div>
+
+          <div class="bar-row">
+            <div class="bar-label-group">
+              <span>In Progress</span>
+              <span id="count-st-InProgress">0</span>
+            </div>
+            <div class="bar-track"><div id="bar-st-InProgress" class="bar-fill" style="width: 0%; background: var(--status-progress);"></div></div>
+          </div>
+
+          <div class="bar-row">
+            <div class="bar-label-group">
+              <span>Resolved</span>
+              <span id="count-st-Resolved">0</span>
+            </div>
+            <div class="bar-track"><div id="bar-st-Resolved" class="bar-fill" style="width: 0%; background: var(--status-resolved);"></div></div>
+          </div>
+        </div>
+
+        <!-- System Cloud Metadata Card -->
+        <div class="chart-card" style="display: flex; flex-direction: column; justify-content: space-between;">
+          <div>
+            <div class="chart-card-title">Cloud Deployment Architecture</div>
+            <p style="font-size: 0.85rem; color: var(--text-muted); margin-bottom: 1rem;">
+              Production environment configured for high availability static serving.
+            </p>
+            <div style="display: flex; flex-direction: column; gap: 0.6rem; font-size: 0.85rem;">
+              <div style="display: flex; justify-content: space-between; padding-bottom: 0.4rem; border-bottom: 1px solid var(--border);">
+                <span style="color: var(--text-muted);">Target Host</span>
+                <strong>AWS EC2 (Ubuntu Linux)</strong>
+              </div>
+              <div style="display: flex; justify-content: space-between; padding-bottom: 0.4rem; border-bottom: 1px solid var(--border);">
+                <span style="color: var(--text-muted);">Web Server</span>
+                <strong>Nginx / HTTP</strong>
+              </div>
+              <div style="display: flex; justify-content: space-between; padding-bottom: 0.4rem; border-bottom: 1px solid var(--border);">
+                <span style="color: var(--text-muted);">Document Root</span>
+                <code>/var/www/html</code>
+              </div>
+            </div>
+          </div>
+          <div style="margin-top: 1rem; background: var(--accent-soft); padding: 0.75rem; border-radius: var(--radius-sm); font-size: 0.8rem; color: var(--accent);">
+            ✓ Zero external build dependencies. Compatible with immediate directory uploads.
+          </div>
+        </div>
+      </div>
+
+      <!-- Filters & Live Search Table -->
+      <div class="filter-bar">
+        <div style="flex: 1; min-width: 250px;">
+          <input type="text" id="adminSearch" class="form-control" placeholder="Search by ID, title, student, or building...">
+        </div>
+        <div class="filter-group">
+          <selected id="adminFilterCat" class="form-control" style="width: auto;">
+            <option value="" selected>All Categories</option>
+            <option value="Classroom">Classroom</option>
+            <option value="Electrical">Electrical</option>
+            <option value="Water">Water</option>
+            <option value="Wi-Fi">Wi-Fi</option>
+            <option value="Cleanliness">Cleanliness</option>
+            <option value="Laboratory">Laboratory</option>
+            <option value="Washroom">Washroom</option>
+            <option value="Library">Library</option>
+            <option value="Infrastructure">Infrastructure</option>
+          </select>
+
+          <selected id="adminFilterStatus" class="form-control" style="width: auto;">
+            <option value="" selected>All Statuses</option>
+            <option value="Reported">Reported</option>
+            <option value="Under Review">Under Review</option>
+            <option value="Assigned">Assigned</option>
+            <option value="In Progress">In Progress</option>
+            <option value="Resolved">Resolved</option>
+            <option value="Rejected">Rejected</option>
+          </select>
+
+          <selected id="adminFilterPriority" class="form-control" style="width: auto;">
+            <option value="" selected>All Priorities</option>
+            <option value="Low">Low</option>
+            <option value="Medium">Medium</option>
+            <option value="High">High</option>
+            <option value="Critical">Critical</option>
+          </select>
+        </div>
+      </div>
+
+      <!-- Issues Data Table -->
+      <div class="table-responsive">
+        <table class="data-table responsive-card-view">
+          <thead>
+            <tr>
+              <th>Issue ID</th>
+              <th>Student</th>
+              <th>Title</th>
+              <th>Category</th>
+              <th>Location</th>
+              <th>Priority</th>
+              <th>Status</th>
+              <th>Action</th>
+            </tr>
+          </thead>
+          <tbody id="adminTableBody">
+            <!-- Dynamically populated by script.js -->
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </main>
+
+  <!-- Admin Issue Detail / Edit Modal -->
+  <div id="adminDetailModal" class="modal-backdrop">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h3 class="modal-title">Manage Issue <span id="admDetailId" style="color:var(--accent);">CF-XXXX</span></h3>
+        <button type="button" class="modal-close" onclick="closeModal('adminDetailModal')">×</button>
+      </div>
+
+      <div style="font-size: 0.9rem; display: flex; flex-direction: column; gap: 0.85rem;">
+        <div>
+          <strong id="admDetailTitle" style="font-size: 1.05rem; color: var(--primary); display:block; margin-bottom: 0.2rem;"></strong>
+          <p id="admDetailDesc" style="color: var(--text-muted); font-size: 0.85rem;"></p>
+        </div>
+
+        <div id="admPhotoContainer" style="display:none;"></div>
+
+        <div style="display:grid; grid-template-columns: 1fr 1fr; gap: 0.75rem; background: var(--bg-main); padding: 0.75rem; border-radius: var(--radius-sm);">
+          <div>
+            <span style="font-size: 0.75rem; color: var(--text-muted); display: block;">STUDENT</span>
+            <span id="admDetailStudent" style="font-weight: 600;">-</span>
+          </div>
+          <div>
+            <span style="font-size: 0.75rem; color: var(--text-muted); display: block;">CONTACT</span>
+            <span id="admDetailEmail" style="font-weight: 600;">-</span>
+          </div>
+          <div>
+            <span style="font-size: 0.75rem; color: var(--text-muted); display: block;">LOCATION</span>
+            <span id="admDetailLocation" style="font-weight: 600;">-</span>
+          </div>
+          <div>
+            <span style="font-size: 0.75rem; color: var(--text-muted); display: block;">REPORTED ON</span>
+            <span id="admDetailDate" style="font-weight: 600;">-</span>
+          </div>
+        </div>
+
+        <!-- Status & Department Update -->
+        <div style="border-top: 1px solid var(--border); padding-top: 1rem; margin-top: 0.5rem;">
+          <label class="form-label" for="admStatusSelect">Update Workflow Status</label>
+          <select id="admStatusSelect" class="form-control" style="margin-bottom: 0.85rem;">
+            <option value="Reported">Reported</option>
+            <option value="Under Review">Under Review</option>
+            <option value="Assigned">Assigned</option>
+            <option value="In Progress">In Progress</option>
+            <option value="Resolved">Resolved</option>
+            <option value="Rejected">Rejected</option>
+          </select>
+
+          <label class="form-label" for="admDeptInput">Assigned Department / Crew</label>
+          <input type="text" id="admDeptInput" class="form-control" placeholder="e.g. Facilities & HVAC Team">
+        </div>
+      </div>
+
+      <div style="display: flex; gap: 0.75rem; justify-content: flex-end; margin-top: 1.5rem;">
+        <button type="button" class="btn btn-secondary" onclick="closeModal('adminDetailModal')">Cancel</button>
+        <button type="button" id="admSaveStatusBtn" class="btn btn-primary">Update Status</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-bottom">
+        © 2026 CampusFix. Academic Project. Built for AWS EC2 & Nginx.
+      </div>
+    </div>
+  </footer>
+
+  <script src="js/script.js"></script>
+</body>
+</html>

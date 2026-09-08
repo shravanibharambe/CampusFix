@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CampusFix — Cloud-Based College Issue Reporting System</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+  <!-- Site Navigation -->
+  <header class="site-header">
+    <div class="container nav-container">
+      <a href="index.html" class="brand-logo">
+        <span class="brand-icon">⚡</span>
+        <span>CampusFix</span>
+      </a>
+
+      <button class="mobile-toggle" id="mobileNavBtn" aria-label="Toggle navigation">☰</button>
+
+      <ul class="nav-menu" id="navMenu">
+        <li><a href="index.html" class="nav-link active">Home</a></li>
+        <li><a href="report.html" class="nav-link">Report Issue</a></li>
+        <li><a href="track.html" class="nav-link">Track Issue</a></li>
+        <li><a href="admin.html" class="nav-link">Admin Portal</a></li>
+        <li><a href="#about" class="nav-link">About</a></li>
+      </ul>
+
+      <div class="nav-cta-wrap">
+        <a href="report.html" class="btn btn-primary btn-sm">Report an Issue</a>
+      </div>
+    </div>
+  </header>
+
+  <!-- Hero Section -->
+  <section class="hero-section">
+    <div class="container">
+      <div class="hero-grid">
+        <div class="hero-content">
+          <h1>Fix Your Campus. <br><span>One Report at a Time.</span></h1>
+          <p class="hero-lead">
+            CampusFix makes it simple for students to report campus infrastructure problems, track real-time resolution progress, and create an accountable, modern college environment.
+          </p>
+          <div class="hero-actions">
+            <a href="report.html" class="btn btn-primary">Report an Issue</a>
+            <a href="track.html" class="btn btn-secondary">Track My Issue</a>
+          </div>
+        </div>
+
+        <!-- Workflow Visual Mockup -->
+        <div class="mockup-card">
+          <div class="mockup-header">
+            <div>
+              <div style="font-weight:700; font-size:0.95rem;">Live Pipeline Status</div>
+              <div style="font-size:0.8rem; color:var(--text-muted);">Issue #CF-2026-1048</div>
+            </div>
+            <span class="mockup-badge">In Progress</span>
+          </div>
+          
+          <div style="font-size: 0.9rem; font-weight: 600; margin-bottom: 0.5rem;">
+            Wi-Fi Gateway Failure in CS Lab 2
+          </div>
+          <div style="font-size: 0.8rem; color: var(--text-muted); margin-bottom: 1rem;">
+            Academic Block B • Computer Science Dept
+          </div>
+
+          <div class="mockup-pipeline">
+            <div class="pipeline-step active">
+              <div class="pipeline-dot">✓</div>
+              <div class="pipeline-label">Student</div>
+            </div>
+            <div class="pipeline-step active">
+              <div class="pipeline-dot">✓</div>
+              <div class="pipeline-label">Reported</div>
+            </div>
+            <div class="pipeline-step active">
+              <div class="pipeline-dot">●</div>
+              <div class="pipeline-label">Admin</div>
+            </div>
+            <div class="pipeline-step">
+              <div class="pipeline-dot">○</div>
+              <div class="pipeline-label">Resolved</div>
+            </div>
+          </div>
+          <div style="background: var(--bg-main); padding: 0.75rem; border-radius: var(--radius-sm); font-size: 0.8rem; border-left: 3px solid var(--accent);">
+            <strong>Assigned:</strong> IT Operations (Technician on-site)
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Statistics Section -->
+  <section class="stats-section">
+    <div class="container">
+      <div class="stats-grid">
+        <div class="stat-card">
+          <div class="stat-value counter-value" data-target="1248" data-suffix="">1248</div>
+          <div class="stat-label">Issues Reported</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-value counter-value" data-target="936" data-suffix="">936</div>
+          <div class="stat-label">Issues Resolved</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-value counter-value" data-target="87" data-suffix="%">87%</div>
+          <div class="stat-label">Resolution Rate</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-value counter-value" data-target="24" data-suffix="h">24h</div>
+          <div class="stat-label">Average Response</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- How It Works -->
+  <section class="steps-section">
+    <div class="container">
+      <div class="section-head">
+        <span class="section-tag">Process</span>
+        <h2 class="section-title">How CampusFix Works</h2>
+        <p class="section-subtitle">A transparent 4-step loop connecting students with college administrative departments.</p>
+      </div>
+
+      <div class="steps-grid">
+        <div class="step-card">
+          <span class="step-num">STEP 01</span>
+          <div class="step-icon">👁️</div>
+          <h3 class="step-title">Spot an Issue</h3>
+          <p class="step-desc">Notice broken equipment, Wi-Fi failure, or water leaks around campus.</p>
+        </div>
+
+        <div class="step-card">
+          <span class="step-num">STEP 02</span>
+          <div class="step-icon">📝</div>
+          <h3 class="step-title">Report It</h3>
+          <p class="step-desc">Submit location, priority, description, and optional photo in under a minute.</p>
+        </div>
+
+        <div class="step-card">
+          <span class="step-num">STEP 03</span>
+          <div class="step-icon">📍</div>
+          <h3 class="step-title">Track Progress</h3>
+          <p class="step-desc">Receive a unique tracking ID to follow live status updates from facility staff.</p>
+        </div>
+
+        <div class="step-card">
+          <span class="step-num">STEP 04</span>
+          <div class="step-icon">✅</div>
+          <h3 class="step-title">Get It Resolved</h3>
+          <p class="step-desc">College departments inspect, fix the issue, and mark it resolved with audit logs.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Issue Categories -->
+  <section class="category-section">
+    <div class="container">
+      <div class="section-head">
+        <span class="section-tag">Coverage</span>
+        <h2 class="section-title">Campus Issue Categories</h2>
+        <p class="section-subtitle">Select any category to immediately report an issue in that department.</p>
+      </div>
+
+      <div class="category-grid">
+        <a href="report.html?cat=Classroom" class="category-card">
+          <div class="category-icon">🪑</div>
+          <div class="category-name">Classroom</div>
+        </a>
+        <a href="report.html?cat=Electrical" class="category-card">
+          <div class="category-icon">💡</div>
+          <div class="category-name">Electrical</div>
+        </a>
+        <a href="report.html?cat=Water" class="category-card">
+          <div class="category-icon">🚰</div>
+          <div class="category-name">Water</div>
+        </a>
+        <a href="report.html?cat=Wi-Fi" class="category-card">
+          <div class="category-icon">📶</div>
+          <div class="category-name">Wi-Fi / Network</div>
+        </a>
+        <a href="report.html?cat=Cleanliness" class="category-card">
+          <div class="category-icon">🧹</div>
+          <div class="category-name">Cleanliness</div>
+        </a>
+        <a href="report.html?cat=Laboratory" class="category-card">
+          <div class="category-icon">🧪</div>
+          <div class="category-name">Laboratory</div>
+        </a>
+        <a href="report.html?cat=Washroom" class="category-card">
+          <div class="category-icon">🚻</div>
+          <div class="category-name">Washroom</div>
+        </a>
+        <a href="report.html?cat=Library" class="category-card">
+          <div class="category-icon">📚</div>
+          <div class="category-name">Library</div>
+        </a>
+        <a href="report.html?cat=Infrastructure" class="category-card">
+          <div class="category-icon">🏢</div>
+          <div class="category-name">Infrastructure</div>
+        </a>
+        <a href="report.html?cat=Other" class="category-card">
+          <div class="category-icon">⚠️</div>
+          <div class="category-name">Other</div>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- About Section -->
+  <section class="steps-section" id="about">
+    <div class="container">
+      <div class="section-head">
+        <span class="section-tag">About CampusFix</span>
+        <h2 class="section-title">Built for Campus Excellence</h2>
+        <p class="section-subtitle">CampusFix is a cloud-based college issue reporting platform designed to connect students and campus administration through a transparent reporting system.</p>
+      </div>
+
+      <div class="values-grid">
+        <div class="value-card">
+          <div class="value-icon">🔍</div>
+          <h3>Transparency</h3>
+          <p style="color: var(--text-muted); font-size: 0.9rem; margin-top: 0.5rem;">Students can monitor the exact operational status of their reports in real-time.</p>
+        </div>
+        <div class="value-card">
+          <div class="value-icon">🛡️</div>
+          <h3>Accountability</h3>
+          <p style="color: var(--text-muted); font-size: 0.9rem; margin-top: 0.5rem;">Maintenance teams are assigned specific tasks with clear operational accountability.</p>
+        </div>
+        <div class="value-card">
+          <div class="value-icon">🏛️</div>
+          <h3>Better Campus</h3>
+          <p style="color: var(--text-muted); font-size: 0.9rem; margin-top: 0.5rem;">Rapid issue resolution fosters a safer, modern, and cleaner learning environment.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <h3>⚡ CampusFix</h3>
+          <p>Making campuses better, one report at a time. Cloud-native student issue reporting & tracking platform.</p>
+        </div>
+        <div class="footer-links">
+          <h4>Navigation</h4>
+          <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="report.html">Report Issue</a></li>
+            <li><a href="track.html">Track Issue</a></li>
+            <li><a href="admin.html">Admin Portal</a></li>
+          </ul>
+        </div>
+        <div class="footer-links">
+          <h4>Campus Safety</h4>
+          <ul>
+            <li><a href="track.html">Status Directory</a></li>
+            <li><a href="admin.html">Department Login</a></li>
+            <li><a href="#about">Architecture & Values</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        © 2026 CampusFix. Academic Project. Built for AWS EC2 & Nginx.
+      </div>
+    </div>
+  </footer>
+
+  <script src="js/script.js"></script>
+</body>
+</html>

@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Track Your Issue — CampusFix</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+  <!-- Site Navigation -->
+  <header class="site-header">
+    <div class="container nav-container">
+      <a href="index.html" class="brand-logo">
+        <span class="brand-icon">⚡</span>
+        <span>CampusFix</span>
+      </a>
+
+      <button class="mobile-toggle" id="mobileNavBtn" aria-label="Toggle navigation">☰</button>
+
+      <ul class="nav-menu" id="navMenu">
+        <li><a href="index.html" class="nav-link">Home</a></li>
+        <li><a href="report.html" class="nav-link">Report Issue</a></li>
+        <li><a href="track.html" class="nav-link active">Track Issue</a></li>
+        <li><a href="admin.html" class="nav-link">Admin Portal</a></li>
+      </ul>
+
+      <div class="nav-cta-wrap">
+        <a href="report.html" class="btn btn-primary btn-sm">Report Issue</a>
+      </div>
+    </div>
+  </header>
+
+  <main class="page-container">
+    <div class="container">
+      <div class="section-head" style="margin-bottom: 2rem;">
+        <span class="section-tag">Status Verification</span>
+        <h1 class="section-title">Track Your Campus Issue</h1>
+        <p class="section-subtitle">Enter your unique issue reference number to view live department progress.</p>
+      </div>
+
+      <!-- Search Input Card -->
+      <div class="track-search-card">
+        <label for="trackIssueInput" class="form-label" style="margin-bottom: 0.5rem; display:block;">Enter Issue ID</label>
+        <div class="search-input-group">
+          <input type="text" id="trackIssueInput" class="form-control" placeholder="e.g. CF-2026-1001" autocomplete="off">
+          <button type="button" id="btnTrackSearch" class="btn btn-primary">Track Issue</button>
+        </div>
+        <div style="font-size: 0.8rem; color: var(--text-muted); margin-top: 0.65rem;">
+          Try sample IDs: <strong>CF-2026-1001</strong>, <strong>CF-2026-1002</strong>, <strong>CF-2026-1003</strong>
+        </div>
+      </div>
+
+      <!-- Result Tracking Container -->
+      <div id="trackResultBox" class="tracking-result-box">
+        <div class="tracking-header">
+          <div>
+            <span id="resIssueId" style="font-size: 1.25rem; font-weight: 800; color: var(--accent);">CF-2026-XXXX</span>
+            <h2 id="resTitle" style="font-size: 1.15rem; color: var(--primary); margin-top: 0.25rem;">Issue Title</h2>
+          </div>
+          <div style="display: flex; gap: 0.5rem; align-items: center;">
+            <span id="resPriority" class="badge">Priority</span>
+            <span id="resStatusBadge" class="badge">Status</span>
+          </div>
+        </div>
+
+        <!-- Issue Metadata Grid -->
+        <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 1rem; background: var(--bg-main); padding: 1rem; border-radius: var(--radius-md); margin-bottom: 2rem; font-size: 0.875rem;">
+          <div>
+            <span style="color: var(--text-muted); display: block; font-size: 0.75rem; text-transform: uppercase; font-weight: 700;">Category</span>
+            <strong id="resCategory">-</strong>
+          </div>
+          <div>
+            <span style="color: var(--text-muted); display: block; font-size: 0.75rem; text-transform: uppercase; font-weight: 700;">Location</span>
+            <strong id="resLocation">-</strong>
+          </div>
+          <div>
+            <span style="color: var(--text-muted); display: block; font-size: 0.75rem; text-transform: uppercase; font-weight: 700;">Date Reported</span>
+            <strong id="resDate">-</strong>
+          </div>
+          <div style="grid-column: span 3; border-top: 1px dashed var(--border); padding-top: 0.75rem;">
+            <span style="color: var(--text-muted); display: block; font-size: 0.75rem; text-transform: uppercase; font-weight: 700;">Assigned Department</span>
+            <strong id="resDept">-</strong>
+          </div>
+          <div style="grid-column: span 3; border-top: 1px dashed var(--border); padding-top: 0.75rem;">
+            <span style="color: var(--text-muted); display: block; font-size: 0.75rem; text-transform: uppercase; font-weight: 700;">Description</span>
+            <p id="resDescription" style="color: var(--text-main); margin-top: 0.2rem; font-size: 0.9rem;">-</p>
+          </div>
+        </div>
+
+        <h3 style="font-size: 1rem; font-weight: 700; margin-bottom: 1.25rem;">Lifecycle Timeline</h3>
+
+        <!-- Interactive Vertical Timeline -->
+        <ul class="timeline">
+          <li class="timeline-item" id="stage-Reported">
+            <div class="timeline-node">1</div>
+            <div class="timeline-content">
+              <div class="timeline-title">Report Submitted</div>
+              <div class="timeline-desc">Issue registered in central system with initial details and priority score.</div>
+            </div>
+          </li>
+
+          <li class="timeline-item" id="stage-Review">
+            <div class="timeline-node">2</div>
+            <div class="timeline-content">
+              <div class="timeline-title">Under Review</div>
+              <div class="timeline-desc">Facilities triage team reviewed validity and determined scope.</div>
+            </div>
+          </li>
+
+          <li class="timeline-item" id="stage-Assigned">
+            <div class="timeline-node">3</div>
+            <div class="timeline-content">
+              <div class="timeline-title">Assigned to Department</div>
+              <div class="timeline-desc">Work order allocated to technicians and relevant maintenance crew.</div>
+            </div>
+          </li>
+
+          <li class="timeline-item" id="stage-Progress">
+            <div class="timeline-node">4</div>
+            <div class="timeline-content">
+              <div class="timeline-title">In Progress</div>
+              <div class="timeline-desc">Physical inspection, part replacement, or network repair currently underway.</div>
+            </div>
+          </li>
+
+          <li class="timeline-item" id="stage-Resolved">
+            <div class="timeline-node">5</div>
+            <div class="timeline-content">
+              <div class="timeline-title">Resolved & Verified</div>
+              <div class="timeline-desc">Task completed, inspected, and signed off by campus administrators.</div>
+            </div>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </main>
+
+  <!-- Footer -->
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-bottom">
+        © 2026 CampusFix. Academic Project. Built for AWS EC2 & Nginx.
+      </div>
+    </div>
+  </footer>
+
+  <script src="js/script.js"></script>
+</body>
+</html>

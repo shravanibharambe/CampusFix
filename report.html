@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Report a Campus Issue — CampusFix</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+  <!-- Site Navigation -->
+  <header class="site-header">
+    <div class="container nav-container">
+      <a href="index.html" class="brand-logo">
+        <span class="brand-icon">⚡</span>
+        <span>CampusFix</span>
+      </a>
+
+      <button class="mobile-toggle" id="mobileNavBtn" aria-label="Toggle navigation">☰</button>
+
+      <ul class="nav-menu" id="navMenu">
+        <li><a href="index.html" class="nav-link">Home</a></li>
+        <li><a href="report.html" class="nav-link active">Report Issue</a></li>
+        <li><a href="track.html" class="nav-link">Track Issue</a></li>
+        <li><a href="admin.html" class="nav-link">Admin Portal</a></li>
+      </ul>
+
+      <div class="nav-cta-wrap">
+        <a href="track.html" class="btn btn-secondary btn-sm">Track Issue</a>
+      </div>
+    </div>
+  </header>
+
+  <main class="page-container">
+    <div class="container">
+      <div class="section-head" style="margin-bottom: 2rem;">
+        <span class="section-tag">New Submission</span>
+        <h1 class="section-title">Report a Campus Issue</h1>
+        <p class="section-subtitle">Help us identify and resolve problems around campus.</p>
+      </div>
+
+      <form id="reportIssueForm" class="form-layout" novalidate>
+        <!-- Student Info -->
+        <div class="form-section-title">👤 Student Information</div>
+        <div class="form-grid">
+          <div class="form-group">
+            <label class="form-label" for="studentName">Full Name <span class="required">*</span></label>
+            <input type="text" id="studentName" class="form-control" placeholder="e.g. Rahul Sharma" required>
+            <span class="field-error">Please enter your full name (minimum 2 characters).</span>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label" for="studentId">Student ID / Roll No <span class="required">*</span></label>
+            <input type="text" id="studentId" class="form-control" placeholder="e.g. 2024CS1024" required>
+            <span class="field-error">Please enter a valid student ID.</span>
+          </div>
+
+          <div class="form-group full-width">
+            <label class="form-label" for="studentEmail">College Email Address <span class="required">*</span></label>
+            <input type="email" id="studentEmail" class="form-control" placeholder="name@campus.edu" required>
+            <span class="field-error">Please provide a valid college email address.</span>
+          </div>
+        </div>
+
+        <!-- Issue Info -->
+        <div class="form-section-title">⚠️ Issue Details</div>
+        <div class="form-grid">
+          <div class="form-group">
+            <label class="form-label" for="issueCategory">Category <span class="required">*</span></label>
+            <select id="issueCategory" class="form-control" required>
+              <option value="" selected>Select Category</option>
+              <option value="Classroom">Classroom</option>
+              <option value="Electrical">Electrical</option>
+              <option value="Water">Water</option>
+              <option value="Wi-Fi">Wi-Fi / Network</option>
+              <option value="Cleanliness">Cleanliness</option>
+              <option value="Laboratory">Laboratory</option>
+              <option value="Washroom">Washroom</option>
+              <option value="Library">Library</option>
+              <option value="Infrastructure">Infrastructure</option>
+              <option value="Other">Other</option>
+            </select>
+            <span class="field-error">Please select a category.</span>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label" for="issuePriority">Priority Level <span class="required">*</span></label>
+            <select id="issuePriority" class="form-control" required>
+              <option value="" selected>Select Priority</option>
+              <option value="Low">Low — Minor aesthetic / non-blocking</option>
+              <option value="Medium">Medium — Standard classroom defect</option>
+              <option value="High">High — Disrupting lecture / operations</option>
+              <option value="Critical">Critical — Immediate safety / utility risk</option>
+            </select>
+            <span class="field-error">Please select an issue priority.</span>
+          </div>
+
+          <div class="form-group full-width">
+            <label class="form-label" for="issueTitle">Issue Title <span class="required">*</span></label>
+            <input type="text" id="issueTitle" class="form-control" placeholder="e.g. AC unit making loud noise and leaking in LH-3" required>
+            <span class="field-error">Please enter a descriptive title (at least 5 characters).</span>
+          </div>
+
+          <div class="form-group full-width">
+            <label class="form-label" for="issueDesc">Detailed Description <span class="required">*</span></label>
+            <textarea id="issueDesc" class="form-control" placeholder="Provide complete details about what is happening and the impact..." required></textarea>
+            <span class="field-error">Please provide sufficient detail (at least 15 characters).</span>
+          </div>
+        </div>
+
+        <!-- Location -->
+        <div class="form-section-title">📍 Campus Location</div>
+        <div class="form-grid">
+          <div class="form-group">
+            <label class="form-label" for="campusBuilding">Building / Department <span class="required">*</span></label>
+            <input type="text" id="campusBuilding" class="form-control" placeholder="e.g. Academic Block B" required>
+            <span class="field-error">Please specify the building or department.</span>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label" for="roomNumber">Floor / Room Number <span class="required">*</span></label>
+            <input type="text" id="roomNumber" class="form-control" placeholder="e.g. 2nd Floor, Room 204" required>
+            <span class="field-error">Please specify room or area.</span>
+          </div>
+        </div>
+
+        <!-- Optional Evidence -->
+        <div class="form-section-title">📷 Optional Evidence</div>
+        <div class="form-group">
+          <label class="form-label">Upload Photo (JPG, PNG, WEBP — Max 5MB)</label>
+          <div class="file-upload-box" onclick="document.getElementById('issuePhoto').click()">
+            <div style="font-size: 1.75rem; margin-bottom: 0.35rem;">📁</div>
+            <div style="font-size: 0.9rem; font-weight: 600; color: var(--accent);">Click to browse and upload photo</div>
+            <div style="font-size: 0.8rem; color: var(--text-muted);">Helps technicians resolve issues quicker</div>
+          </div>
+          <input type="file" id="issuePhoto" accept="image/png, image/jpeg, image/webp" style="display: none;">
+          
+          <div id="photoPreview" class="file-preview">
+            <img id="previewImg" src="" alt="Upload Preview">
+          </div>
+        </div>
+
+        <div style="margin-top: 2rem;">
+          <button type="submit" class="btn btn-primary btn-block" style="padding: 0.85rem;">Submit Issue</button>
+        </div>
+      </form>
+    </div>
+  </main>
+
+  <!-- Success Modal -->
+  <div id="successModal" class="modal-backdrop">
+    <div class="modal-content" style="text-align: center;">
+      <div style="width: 56px; height: 56px; border-radius: 50%; background: var(--status-resolved-bg); color: var(--status-resolved); display: inline-flex; align-items: center; justify-content: center; font-size: 1.75rem; margin-bottom: 1rem;">
+        ✓
+      </div>
+      <h2 style="font-size: 1.4rem; color: var(--primary); margin-bottom: 0.5rem;">Issue Reported Successfully!</h2>
+      <p style="color: var(--text-muted); font-size: 0.95rem; margin-bottom: 1.25rem;">
+        Your report has been registered in the system and routed to facility operations.
+      </p>
+
+      <div style="background: var(--bg-main); border: 1px dashed var(--border); border-radius: var(--radius-md); padding: 1rem; margin-bottom: 1.5rem;">
+        <span style="font-size: 0.8rem; color: var(--text-muted); text-transform: uppercase; font-weight: 700;">Your Unique Issue ID</span>
+        <div id="modalIssueId" style="font-size: 1.5rem; font-weight: 800; color: var(--accent); margin-top: 0.25rem;">CF-2026-0000</div>
+      </div>
+
+      <div style="display: flex; gap: 0.75rem; justify-content: center;">
+        <button type="button" class="btn btn-secondary" onclick="closeModal('successModal')">Close</button>
+        <a href="#" id="modalTrackBtn" class="btn btn-primary">Track Issue</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-bottom">
+        © 2026 CampusFix. Academic Project. Built for AWS EC2 & Nginx.
+      </div>
+    </div>
+  </footer>
+
+  <script src="js/script.js"></script>
+  <script>
+    document.addEventListener("DOMContentLoaded", () => {
+      const params = new URLSearchParams(window.location.search);
+      const cat = params.get("cat");
+      if (cat) {
+        const select = document.getElementById("issueCategory");
+        if (select) select.value = cat;
+      }
+    });
+  </script>
+</body>
+</html>
